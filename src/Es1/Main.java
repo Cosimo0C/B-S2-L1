@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner= new Scanner(System.in);
         try {
-            int pos = 0;
+            int pos;
             do {
                 int [] las =new int [5];
                 for (int i = 0; i < las.length; i++) {
@@ -25,8 +25,8 @@ public class Main {
                     int num= scanner.nextInt();
                     pos=pos-1;
                     las[pos]=num;
-                    for (int j = 0; j < las.length; j++) {
-                        System.out.print(las[j]+" ");
+                    for (int la : las) {
+                        System.out.print(la + " ");
                     }
                     System.out.println();
                 } else if (pos==0) {
@@ -35,7 +35,7 @@ public class Main {
                     throw new OverPositionException();
                 }
             }while (pos!=0);
-        }catch (OverPositionException ex){
+        }catch (OverPositionException ex) {
         }
     }
 }
