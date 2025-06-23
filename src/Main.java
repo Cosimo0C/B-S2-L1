@@ -1,17 +1,20 @@
+import PackExceptions.OverPositionException;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner= new Scanner(System.in);
-        int pos = 0;
-        do {
-            int [] las =new int [5];
-            for (int i = 0; i < las.length; i++) {
-                Random random=new Random();
-                las[i]= random.nextInt(10)+1;
-                System.out.println(las[i]);
-            }
+        try {
+            int pos = 0;
+            do {
+                int [] las =new int [5];
+                for (int i = 0; i < las.length; i++) {
+                    Random random=new Random();
+                    las[i]= random.nextInt(10)+1;
+                    System.out.println(las[i]);
+                }
                 System.out.println("In che posizione vorresti accedere? Scegli da 1 a 5. 0 per uscire!");
                 pos= scanner.nextInt();
                 if (pos>0 & pos<= las.length){
@@ -25,8 +28,10 @@ public class Main {
                 } else if (pos==0) {
                     System.out.println("Fine!");
                 }else {
-                    System.out.println("Il numero non è compreso tra 1 e 5!");
+                    throw new OverPositionException();
                 }
-        }while (pos!=0);
+            }while (pos!=0);
+        }catch (OverPositionException ex){
+        }
     }
 }
